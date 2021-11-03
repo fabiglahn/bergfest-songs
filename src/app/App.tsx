@@ -13,7 +13,7 @@ function App(): JSX.Element {
           <input type="text" placeholder="mein lieblingslied" />
           <input type="text" placeholder="und das ist von..." />
           <input
-            className={styles.button}
+            className={styles.submit}
             type="submit"
             value="dance! dance! dance!"
           />

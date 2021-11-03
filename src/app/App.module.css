@@ -1,11 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap');
-
 .container {
   display: grid;
   grid-template-columns: 10% 45% 45%;
   place-items: center;
-  font-family: 'Source Sans Pro', sans-serif;
-  background-color: black;
+  background-color: var(--color-secondary);
 }
 
 .image {
@@ -19,21 +16,21 @@
   row-gap: 0.5rem;
 }
 
-.button {
-  background-color: rgb(123 217 159);
+.submit {
+  background-color: var(--color-primary);
   border: none;
   padding: 0.3rem;
-  color: white;
+  color: var(--color-tertiary);
   text-align: center;
   transition-duration: 0.5s;
 }
 
 .button:hover {
-  background-color: rgb(123 217 159 / 50%);
+  background-color: var(--color-primary-shadow);
 }
 
 .explanation {
-  color: rgb(123 217 159);
+  color: var(--color-primary);
   text-align: center;
   font-size: 1.2rem;
   font-weight: 400;
