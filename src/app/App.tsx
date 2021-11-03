@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './App.module.css';
+import Title from './components/Title/title';
 
 function App(): JSX.Element {
   return (
     <main className={styles.container}>
-      <div>
-        <h1 className={styles.title}>Bergfest.</h1>
-      </div>
+      <Title />
       <div>
         <h2 className={styles.explanation}>Welchen Song wünscht du dir?</h2>
         <form className={styles.form}>
