@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Waiting+for+the+Sunrise&display=swap');
 
 .container {
   display: grid;
   grid-template-columns: 50% 50%;
   place-items: center;
   font-family: 'Source Sans Pro', sans-serif;
+  background-color: black;
 }
 
 .image {
@@ -19,10 +21,16 @@
 }
 
 .title {
-  text-transform: uppercase;
-  color: rgb(123 217 159);
+  text-transform: lowercase;
+
+  /* color: rgb(123 217 159); */
+  color: white;
   text-align: center;
-  font-weight: 400;
+  font-weight: 300;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  /* font-family: 'Waiting for the Sunrise', cursive; */
+  font-size: 4rem;
 }
 
 .button {
@@ -38,4 +46,5 @@
   text-align: center;
   font-size: 1.2rem;
   font-weight: 400;
+  text-transform: lowercase;
 }

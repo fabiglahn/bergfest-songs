@@ -5,8 +5,8 @@ function App(): JSX.Element {
   return (
     <main className={styles.container}>
       <div>
-        <h1 className={styles.title}>Bergfest</h1>
-        <h2 className={styles.explanation}>Welchen Song wünscht du dir?</h2>
+        <h1 className={styles.title}>Bergfest.</h1>
+        <h2 className={styles.explanation}>welchen song wünscht du dir?</h2>
         <form className={styles.form}>
           <input type="text" placeholder="name" />
           <input type="text" placeholder="favorite song" />
@@ -14,7 +14,7 @@ function App(): JSX.Element {
           <input
             className={styles.button}
             type="submit"
-            value="Dance! Dance! Dance!"
+            value="dance! dance! dance!"
           />
         </form>
       </div>
