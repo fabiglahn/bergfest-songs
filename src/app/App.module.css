@@ -3,7 +3,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 10% 45% 45%;
   place-items: center;
   font-family: 'Source Sans Pro', sans-serif;
   background-color: black;
@@ -30,7 +30,8 @@
   font-family: 'Source Sans Pro', sans-serif;
 
   /* font-family: 'Waiting for the Sunrise', cursive; */
-  font-size: 4rem;
+  font-size: 3rem;
+  transform: rotate(270deg);
 }
 
 .button {
