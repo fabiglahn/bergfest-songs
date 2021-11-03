@@ -6,7 +6,7 @@ type SplashImageProps = {
   alt: string;
 };
 
-function SplashImage({ url, alt }): SplashImageProps {
+function SplashImage({ url, alt }: SplashImageProps) {
   return <img src={url} alt={alt} className={styles.image} />;
 }
 
