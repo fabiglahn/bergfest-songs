@@ -17,3 +17,11 @@
 .submit:hover {
   background-color: var(--color-primary-shadow);
 }
+
+/* .submit:active {
+  background-color: var(--color-primary-shadow);
+} */
+
+.submit:disabled {
+  background-color: var(--color-primary-shadow);
+}
