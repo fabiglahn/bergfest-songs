@@ -25,3 +25,7 @@
 .submit:disabled {
   background-color: var(--color-primary-shadow);
 }
+
+span {
+  color: var(--color-tertiary);
+}

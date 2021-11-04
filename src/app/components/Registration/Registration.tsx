@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import styles from './Registration.module.css';
 
 type User = {
@@ -7,14 +7,18 @@ type User = {
   lastName: string;
 };
 
-function Registration(): JSX.Element {
+type RegistrationProps = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+function Registration({ onChange }: RegistrationProps): JSX.Element {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [users, setUsers] = useState<User[]>([]);
   const [disable, setDisable] = useState(false);
-  const [selectedUser, setSelectedUser] = useState('');
 
-  function handleSubmit(event: FormEvent) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     fetch('https://json-server.machens.dev/users', {
@@ -54,16 +58,12 @@ function Registration(): JSX.Element {
     <form className={styles.form} onSubmit={handleSubmit}>
       <select
         onClick={handleSelectClick}
-        onChange={(event) => {
-          setSelectedUser(event.target.value);
-          alert('Hi ' + event.target.value);
-        }}
-        value={selectedUser}
+        onChange={(event) => onChange(event.target.value)}
       >
         <option disabled>Teilnehmer wählen</option>
         {userOptions}
       </select>
-      or
+      <span>or create a new user</span>
       <input
         type="text"
         placeholder="vorname"
