@@ -1,0 +1,31 @@
+.form {
+  display: grid;
+  row-gap: 0.5rem;
+  cursor: text;
+}
+
+.submit {
+  background-color: var(--color-primary);
+  border: none;
+  padding: 0.3rem;
+  color: var(--color-tertiary);
+  text-align: center;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: var(--color-primary-shadow);
+}
+
+/* .submit:active {
+  background-color: var(--color-primary-shadow);
+} */
+
+.submit:disabled {
+  background-color: var(--color-primary-shadow);
+}
+
+span {
+  color: var(--color-tertiary);
+}
