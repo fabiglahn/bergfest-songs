@@ -6,3 +6,9 @@
   font-size: 3rem;
   transform: rotate(270deg);
 }
+
+@media only screen and (max-width: 500px) {
+  .title {
+    transform: rotate(0deg);
+  }
+}
