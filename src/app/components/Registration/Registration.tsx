@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState, useEffect } from 'react';
 import styles from './Registration.module.css';
 
 type User = {
@@ -8,20 +8,19 @@ type User = {
 };
 
 type RegistrationProps = {
-  value: string;
-  onChange: (value: string) => void;
+  onSelectUserName: (participantName: string) => void;
 };
 
-function Registration({ onChange }: RegistrationProps): JSX.Element {
+function Registration({ onSelectUserName }: RegistrationProps): JSX.Element {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [users, setUsers] = useState<User[]>([]);
   const [disable, setDisable] = useState(false);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    fetch('https://json-server.machens.dev/users', {
+    await fetch('https://json-server.machens.dev/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,6 +30,9 @@ function Registration({ onChange }: RegistrationProps): JSX.Element {
         lastName: lastName,
       }),
     });
+    refreshUsers();
+    setFirstName('');
+    setLastName('');
     setDisable(true);
   }
 
@@ -42,11 +44,16 @@ function Registration({ onChange }: RegistrationProps): JSX.Element {
     setLastName(event.target.value);
   }
 
-  async function handleSelectClick() {
+  //async function handleSelectClick
+  async function refreshUsers() {
     const response = await fetch('https://json-server.machens.dev/users');
     const newUsers = await response.json();
     setUsers(newUsers);
   }
+
+  useEffect(() => {
+    refreshUsers();
+  }, []);
 
   const userOptions = users.map((user) => (
     <option key={user.id}>
@@ -56,11 +63,8 @@ function Registration({ onChange }: RegistrationProps): JSX.Element {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <select
-        onClick={handleSelectClick}
-        onChange={(event) => onChange(event.target.value)}
-      >
-        <option disabled>Teilnehmer wählen</option>
+      <select onChange={(event) => onSelectUserName(event.target.value)}>
+        <option>Teilnehmer wählen</option>
         {userOptions}
       </select>
       <span>or create a new user</span>

@@ -1,19 +1,16 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import styles from './Songs.module.css';
 
-/* type Wish = {
-    id: number;
-    fullUserName: string;
-    artist: string;
-    title: string;
-}; */
+type SongsProps = {
+  fullUserName: string;
+};
 
-function Songs(): JSX.Element {
-  const [fullUserName, setFullUserName] = useState('');
+function Songs({ fullUserName }: SongsProps): JSX.Element {
+  /*  const [fullUserName, setFullUserName] = useState(''); */
   const [artist, setArtist] = useState('');
   const [title, setTitle] = useState('');
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
     fetch('https://json-server.machens.dev/songs', {
@@ -29,7 +26,7 @@ function Songs(): JSX.Element {
     });
   }
 
-  function handleFullUserNameChange(event: ChangeEvent<HTMLInputElement>) {
+  /*   function handleFullUserNameChange(event: ChangeEvent<HTMLInputElement>) {
     setFullUserName(event.target.value);
   }
 
@@ -40,27 +37,27 @@ function Songs(): JSX.Element {
   function handleTitleChange(event: ChangeEvent<HTMLInputElement>) {
     setTitle(event.target.value);
   }
-
+ */
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2>Was ist dein Lieblingssong?</h2>
-      <input
+      {/* <input
         type="text"
         placeholder="full user name"
         value={fullUserName}
         onChange={handleFullUserNameChange}
-      />
+      /> */}
       <input
         type="text"
         placeholder="artist"
         value={artist}
-        onChange={handleArtistChange}
+        onChange={(event) => setArtist(event.target.value)}
       />
       <input
         type="text"
         placeholder="title"
         value={title}
-        onChange={handleTitleChange}
+        onChange={(event) => setTitle(event.target.value)}
       />
       <input
         className={styles.submit}

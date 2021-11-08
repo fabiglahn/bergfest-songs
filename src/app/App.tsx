@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './App.module.css';
 import Title from './components/Title/title';
 import Registration from './components/Registration/Registration';
@@ -6,14 +6,29 @@ import SplashImage from './components/Title/SplashImage/SplashImage';
 import Songs from './components/Songs/Songs';
 
 function App(): JSX.Element {
-  const [selectedName, setSelectedName] = useState('');
+  const [selectedName, setSelectedName] = useState<string | null>(
+    sessionStorage.getItem('selectedName')
+  );
+
+  useEffect(() => {
+    if (selectedName) {
+      sessionStorage.setItem('selectedName', selectedName);
+    } else {
+      sessionStorage.removeItem('selectedName');
+    }
+  }, [selectedName]);
 
   let content;
 
+  useEffect(() => {
+    document.title = selectedName ? `Hi ${selectedName}` : 'Bergfest';
+  });
+
   if (selectedName) {
-    content = <Songs />;
+    content = <p>Was ist dein Lieblingssong?</p>;
+    content = <Songs fullUserName={selectedName} />;
   } else {
-    content = <Registration value={selectedName} onChange={setSelectedName} />;
+    content = <Registration onSelectUserName={setSelectedName} />;
   }
 
   return (
@@ -21,7 +36,17 @@ function App(): JSX.Element {
       <div>
         <Title text={selectedName ? `Hi ${selectedName}` : 'Bergfest.'} />
       </div>
-      <div>{content}</div>
+      <div>
+        {content}
+        {selectedName !== null && (
+          <button
+            className={styles.logOutButton}
+            onClick={() => setSelectedName(null)}
+          >
+            Logout user
+          </button>
+        )}
+      </div>
       {/* <div>
         <h2 className={styles.explanation}>Welchen Song wünscht du dir?</h2>
       </div> */}
